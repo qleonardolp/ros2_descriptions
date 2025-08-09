@@ -1,18 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="ur5_control" params="use_gazebo:=^|true">
+  <xacro:macro name="ur5_control">
     <xacro:property name="robot_yaml" value="$(find ros2_descriptions)/config/ur5.yaml"/>
     <xacro:property name="config" value="${xacro.load_yaml(robot_yaml)}"/>
 
     <ros2_control name="UR5RobotSystem" type="system">
       <hardware>
-        <xacro:if value="${use_gazebo}">
-          <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-        </xacro:if>
-        <xacro:unless value="${use_gazebo}">
-          <!-- Insert the robot hardware plugin here -->
-        </xacro:unless>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
       </hardware>
 
       <joint name="shoulder_pan_joint">

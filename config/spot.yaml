@@ -1,0 +1,16 @@
+# Robot configuration
+
+# joints initial positions
+initial:
+  fl_hipx: 0.036
+  fl_hipy: 1.079
+  fl_knee: -2.014
+  fr_hipx: -0.054
+  fr_hipy: 1.083
+  fr_knee: -1.971
+  hl_hipx: 0.027
+  hl_hipy: 1.025
+  hl_knee: -1.983
+  hr_hipx: -0.063
+  hr_hipy: 1.097
+  hr_knee: -1.983

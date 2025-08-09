@@ -5,5 +5,6 @@ This package contains robot descriptions (URDF) properly organized to work with 
 Visualize the robot model with the following command:
 
 ```bash
-ros2 launch ros2_descriptions view_robot.launch.py robot:=ur5
+ros2 launch ros2_descriptions view_robot.launch.py robot:=<robot_name>
 ```
+Robot name options: `ur5`, `spot`
