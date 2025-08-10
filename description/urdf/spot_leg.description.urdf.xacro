@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="spot_robot" params="parent *origin">
+
+  <material name="yellow">
+    <color rgba="1.0 0.8431 0.0 1.0"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+
+  <joint name="support_joint" type="prismatic">
+    <xacro:insert_block name="origin" />
+    <axis xyz="0 0 1"/>
+    <parent link="${parent}"/>
+    <child link="body"/>
+    <limit effort="999.9" velocity="340.0" lower="-0.15" upper="0.60"/>
+    <dynamics damping="0.08" friction="0.023"/>
+  </joint>
+
+  <link name="body">
+    <inertial>
+      <mass value="8.215"/>
+      <origin
+        rpy="0 0 0"
+        xyz="0.00639439 -9.812158532440662e-05 0.000911379"/>
+      <inertia
+        ixx="0.032860" ixy="0.0" ixz="0.0"
+        iyy="0.032860" iyz="0.0"
+        izz="0.032860"/>
+    </inertial>
+  </link>
+
+  <joint name="fl_hipx" type="revolute">
+    <origin xyz="0.29785 0.05500 0.00000" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="body"/>
+    <child link="fl_hip"/>
+    <limit effort="999.9" velocity="999.9" lower="-0.7853981634" upper="0.7853981634"/>
+    <dynamics damping="0.014" friction="0.007"/>
+  </joint>
+
+  <link name="fl_hip">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/fl_hip.obj"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fl_hip.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="-0.716521349312305 0.02956473059648479 0.03655230014702582"
+        xyz="-0.005374345928430557 0.012841847725212574 9.875232353806496e-05"/>
+      <mass value="1.68"/>
+      <inertia
+        ixx="0.0021147398873455382" ixy="0.0" ixz="0.0"
+        iyy="0.0018129577956607131" iyz="0.0"
+        izz="0.002265435737304666"/>
+    </inertial>
+  </link>
+
+  <joint name="fl_hipy" type="revolute">
+    <origin xyz="0.0 0.11080 0.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="fl_hip"/>
+    <child link="fl_uleg"/>
+    <limit effort="999.9" velocity="999.9" lower="-0.89884456477707963539" upper="2.2951079663725435509"/>
+    <dynamics damping="0.011" friction="0.007"/>
+  </joint>
+
+  <link name="fl_uleg">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/fl_uleg.obj"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fl_uleg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="-0.26437828203369795 -0.04853174570753804 0.024046963096353124"
+        xyz="0.005142373498529196 -0.0024323679972440004 -0.12100915610790253"/>
+      <mass value="2.34"/>
+      <inertia
+        ixx="0.02755964961185679" ixy="0.0" ixz="0.0"
+        iyy="0.027354914287651046" iyz="0.0"
+        izz="0.002848145546743553"/>
+    </inertial>
+  </link>
+
+  <joint name="fl_knee" type="revolute">
+    <origin xyz="0.025 0.000 -0.3200" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="fl_uleg"/>
+    <child link="fl_lleg"/>
+    <limit effort="999.9" velocity="999.9" lower="-2.7929" upper="-0.254402"/>
+    <dynamics damping="0.010" friction="0.009"/>
+  </joint>
+
+  <link name="fl_lleg">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/fl_lleg.obj"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fl_lleg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="-0.007266925694167092 -0.009591807116834161 0.00035255970529224356"
+        xyz="0.00225794012658298 4.607596201822162e-05 -0.1800822913646698"/>
+      <mass value="0.35"/>
+      <inertia
+        ixx="0.003999022654901177" ixy="0.0" ixz="0.0"
+        iyy="0.0040503157598010785" iyz="0.0"
+        izz="0.0001493402097647426"/>
+    </inertial>
+  </link>
+
+  </xacro:macro>
+
+</robot>
