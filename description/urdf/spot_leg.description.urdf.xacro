@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-  <xacro:macro name="spot_robot" params="parent *origin">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_leg">
 
   <material name="yellow">
     <color rgba="1.0 0.8431 0.0 1.0"/>
@@ -10,15 +8,6 @@
   <material name="grey">
     <color rgba="0.2 0.2 0.2 1.0"/>
   </material>
-
-  <joint name="support_joint" type="prismatic">
-    <xacro:insert_block name="origin" />
-    <axis xyz="0 0 1"/>
-    <parent link="${parent}"/>
-    <child link="body"/>
-    <limit effort="999.9" velocity="340.0" lower="-0.15" upper="0.60"/>
-    <dynamics damping="0.08" friction="0.023"/>
-  </joint>
 
   <link name="body">
     <inertial>
@@ -131,7 +120,5 @@
         izz="0.0001493402097647426"/>
     </inertial>
   </link>
-
-  </xacro:macro>
 
 </robot>
