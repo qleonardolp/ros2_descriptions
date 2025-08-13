@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5">
-  <xacro:arg name="use_gazebo" default="false" />
+
+  <link name="world"/>
+
+  <joint name="support_joint" type="fixed">
+    <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <parent link="world"/>
+    <child link="base_link" />
+  </joint>
 
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/ur5.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/ur5.ros2_control.xacro" />
 
-  <link name="world"/>
-
-  <xacro:ur5_robot parent="world">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:ur5_robot>
-
   <xacro:ur5_control/>
-
-  <xacro:if value="$(arg use_gazebo)">
-    <xacro:include filename="$(find ros2_descriptions)/description/gazebo/ur5.gazebo.xacro" />
-    <xacro:ur5_gazebo/>
-  </xacro:if>
 </robot>

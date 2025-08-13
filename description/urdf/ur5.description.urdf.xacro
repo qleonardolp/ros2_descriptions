@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5">
 
-  <xacro:macro name="ur5_robot" params="parent *origin">
-
   <material name="grey">
     <color rgba="0.2 0.2 0.2 1.0"/>
   </material>
-
-  <joint name="base_joint" type="fixed">
-    <parent link="${parent}"/>
-    <child link="base_link" />
-    <xacro:insert_block name="origin" />
-  </joint>
 
   <link name="base_link">
     <visual>
@@ -256,7 +248,5 @@
         izz="1.40e-04"/>
     </inertial>
   </link>
-
-  </xacro:macro>
 
 </robot>
