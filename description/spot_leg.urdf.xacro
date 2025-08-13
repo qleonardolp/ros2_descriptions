@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_leg">
+
+  <link name="world"/>
+
+  <joint name="support_joint" type="prismatic">
+    <origin xyz="-0.4 -0.3 0.4" rpy="0 0 0" />
+    <axis xyz="0 0 1"/>
+    <parent link="world"/>
+    <child link="body"/>
+    <limit effort="999.9" velocity="340.0" lower="-0.15" upper="2.60"/>
+    <dynamics damping="0.08" friction="0.023"/>
+  </joint>
+
+  <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot_leg.description.urdf.xacro" />
+  <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot_leg.ros2_control.xacro" />
+
+  <xacro:spot_control/>
+</robot>

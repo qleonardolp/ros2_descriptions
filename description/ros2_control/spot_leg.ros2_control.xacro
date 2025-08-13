@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="spot_control">
+    <xacro:property name="robot_yaml" value="$(find ros2_descriptions)/config/spot.yaml"/>
+    <xacro:property name="config" value="${xacro.load_yaml(robot_yaml)}"/>
+
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find ros2_descriptions)/config/controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+
+    <ros2_control name="SpotBostonDynamics" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+
+      <joint name="support_joint">
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="fl_hipx">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['fl_hipx']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="fl_hipy">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['fl_hipy']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="fl_knee">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['fl_knee']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>
