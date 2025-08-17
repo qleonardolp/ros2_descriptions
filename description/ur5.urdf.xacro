@@ -1,10 +1,26 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur5">
 
-  <link name="world"/>
+  <link name="world">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.15"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.30" />
+      </geometry>
+      <material name="StaticBlue">
+        <color rgba="0.20 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision name="support_body">
+      <origin rpy="0 0 0" xyz="0 0 0.15"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.30" />
+      </geometry>
+    </collision>
+  </link>
 
   <joint name="support_joint" type="fixed">
-    <origin xyz="0 0 0.2" rpy="0 0 0" />
+    <origin xyz="0 0 0.30" rpy="0 0 0" />
     <parent link="world"/>
     <child link="base_link" />
   </joint>
