@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_leg">
 
-  <xacro:arg name="fixed" default="false"/>
+  <xacro:arg name="fixed" default="true"/>
 
   <link name="world"/>
 
@@ -26,5 +26,5 @@
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot_leg.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot_leg.ros2_control.xacro" />
 
-  <xacro:spot_control/>
+  <xacro:spot_control fixed_support="$(arg fixed)"/>
 </robot>
