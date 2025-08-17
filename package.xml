@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ros2_descriptions</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>Up-to-date robot descriptions to work with ros2_control and gz_ros2_control.</description>
   <maintainer email="44267124+qleonardolp@users.noreply.github.com">Leonardo F. dos Santos</maintainer>
   <license>Apache-2.0</license>

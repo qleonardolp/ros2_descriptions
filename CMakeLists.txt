@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(ros2_descriptions VERSION 1.0.0)
+project(ros2_descriptions VERSION 1.0.1)
 
 find_package(ament_cmake REQUIRED)
 
