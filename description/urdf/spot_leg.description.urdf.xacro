@@ -9,25 +9,23 @@
     <color rgba="0.2 0.2 0.2 1.0"/>
   </material>
 
-  <material name="StaticBlue">
-    <color rgba="0.20 1.0 1.0 0.9"/>
-  </material>
-
   <link name="leg_support">
-    <visual>
-      <origin xyz="-0.2455 0.05500 -0.33" rpy="0 0 0" />
-      <geometry>
-        <box size="0.08 0.08 0.74"/>
-      </geometry>
-      <material name="StaticBlue"/>
-    </visual>
-    <visual>
-      <origin xyz="0.0 0.05500 0" rpy="0 0 0" />
-      <geometry>
-        <box size="0.411 0.08 0.08"/>
-      </geometry>
-      <material name="StaticBlue"/>
-    </visual>
+    <xacro:if value="$(arg fixed)">
+      <visual>
+        <origin xyz="-0.2455 0.05500 -0.33" rpy="0 0 0" />
+        <geometry>
+          <box size="0.08 0.08 0.74"/>
+        </geometry>
+        <material name="StaticBlue"/>
+      </visual>
+      <visual>
+        <origin xyz="0.0 0.05500 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.411 0.08 0.08"/>
+        </geometry>
+        <material name="StaticBlue"/>
+      </visual>
+    </xacro:if>
     <inertial>
       <mass value="8.215"/>
       <origin
