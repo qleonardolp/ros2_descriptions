@@ -14,3 +14,5 @@ Robot name options are:
 | `ur5` | `spot` | `spot_leg` |
 | :---: | :----: | :--------: |
 | [<img src="doc/ur5_manipulator.jpg" height="350"/>](doc/ur5_manipulator.jpg) | [<img src="doc/spot_boston_dynamics.jpg" height="350"/>](doc/spot_boston_dynamics.jpg) | [<img src="doc/spot_leg_frames_2.jpg" height="350"/>](doc/spot_leg_frames_2.jpg) |
+| `hyl` |
+| [<img src="doc/HyL_frames.png" height="350"/>](doc/HyL_frames.png) |
