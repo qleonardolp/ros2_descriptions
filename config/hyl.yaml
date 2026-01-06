@@ -1,0 +1,6 @@
+# Robot configuration
+
+# joints initial positions
+initial:
+  hfe_joint: 1.000
+  kfe_joint: -2.00

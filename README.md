@@ -8,6 +8,7 @@ Visualize the robot model with the following command:
 ```bash
 ros2 launch ros2_descriptions view_robot.launch.py robot:=<robot_name>
 ```
+
 Robot name options are:
 
 | `ur5` | `spot` | `spot_leg` |

@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="HyL">
+
+  <xacro:arg name="fixed" default="false"/>
+
+  <material name="StaticBlue">
+    <color rgba="0.20 1.0 1.0 0.9"/>
+  </material>
+
+  <link name="world">
+    <visual>
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <geometry>
+      <box size="0.08 0.08 2.0"/>
+    </geometry>
+    <material name="StaticBlue"/>
+    </visual>
+  </link>
+
+  <xacro:if value="$(arg fixed)">
+    <joint name="support_joint" type="fixed">
+      <origin xyz="0.0 0.04 0.7" rpy="0 0 0" />
+      <parent link="world"/>
+      <child link="trunk" />
+    </joint>
+  </xacro:if>
+  <xacro:unless value="$(arg fixed)">
+    <joint name="support_joint" type="prismatic">
+      <origin xyz="0.0 0.04 0.5" rpy="0 0 0" />
+      <axis xyz="0 0 1"/>
+      <parent link="world"/>
+      <child link="trunk"/>
+      <limit effort="999.9" velocity="340.0" lower="-0.15" upper="2.60"/>
+      <dynamics damping="0.08" friction="0.023"/>
+    </joint>
+  </xacro:unless>
+
+  <xacro:include filename="$(find ros2_descriptions)/description/urdf/hyl.description.urdf.xacro" />
+  <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/hyl.ros2_control.xacro" />
+
+  <xacro:hyq_control fixed_support="$(arg fixed)"/>
+</robot>
