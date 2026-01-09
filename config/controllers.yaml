@@ -11,11 +11,13 @@ controller_manager:
         controllers:
           execution_time:  # refers to controller's update cycle execution time in us
             mean_error:
-              warn: 1000.0
-              error: 2000.0
+              warn: 150.0
+              error: 500.0
             standard_deviation:
-              warn: 100.0
-              error: 200.0
+              warn: 50.0
+              error: 150.0
+
+    # position_proportional_gain: 0.5
 
 ur5_effort_controller:
   ros__parameters:

@@ -9,7 +9,23 @@
     <color rgba="0.2 0.2 0.2 1.0"/>
   </material>
 
-  <link name="body">
+  <link name="leg_support">
+    <xacro:if value="$(arg fixed)">
+      <visual>
+        <origin xyz="-0.2455 0.05500 -0.33" rpy="0 0 0" />
+        <geometry>
+          <box size="0.08 0.08 0.74"/>
+        </geometry>
+        <material name="StaticBlue"/>
+      </visual>
+      <visual>
+        <origin xyz="0.0 0.05500 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.411 0.08 0.08"/>
+        </geometry>
+        <material name="StaticBlue"/>
+      </visual>
+    </xacro:if>
     <inertial>
       <mass value="8.215"/>
       <origin
@@ -25,7 +41,7 @@
   <joint name="fl_hipx" type="revolute">
     <origin xyz="0.29785 0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <parent link="body"/>
+    <parent link="leg_support"/>
     <child link="fl_hip"/>
     <limit effort="999.9" velocity="999.9" lower="-0.7853981634" upper="0.7853981634"/>
     <dynamics damping="0.014" friction="0.007"/>
