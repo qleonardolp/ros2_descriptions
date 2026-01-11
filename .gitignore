@@ -51,4 +51,7 @@ qtcreator-*
 CATKIN_IGNORE
 
 slprj/
+HyL.slx
+*.slx.r2024a
 *.slxc
+*.mexw64
