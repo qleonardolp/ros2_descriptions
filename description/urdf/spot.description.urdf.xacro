@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-  <xacro:macro name="spot_robot" params="parent *origin">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot">
 
   <material name="yellow">
-    <color rgba="1.0 0.8431 0.0 1.0"/>
+    <color rgba="1.0 0.894 0.0 1.0"/>
   </material>
 
   <material name="grey">
-    <color rgba="0.2 0.2 0.2 1.0"/>
+    <color rgba="0.337 0.349 0.380 1.0"/>
   </material>
 
-  <joint name="trunk_joint" type="fixed">
-    <parent link="${parent}"/>
+  <!-- This link is to suppress KDL parsing warning. -->
+  <link name="body_dummy"/>
+
+  <joint name="trunk_dummy" type="fixed">
+    <origin xyz="0 0 0.4" rpy="0 0 0" />
+    <parent link="body_dummy"/>
     <child link="body" />
-    <xacro:insert_block name="origin" />
   </joint>
 
   <link name="body">
@@ -137,6 +138,14 @@
     </inertial>
   </link>
 
+  <joint name="fl_foot_transform" type="fixed">
+    <origin xyz="-0.015 0 -0.362" rpy="0 0.7854 0" />
+    <parent link="fl_lleg"/>
+    <child link="fl_foot" />
+  </joint>
+
+  <link name="fl_foot"/>
+
   <joint name="fr_hipx" type="revolute">
     <origin xyz="0.29785 -0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
@@ -232,6 +241,14 @@
         izz="0.0001493402097647426"/>
     </inertial>
   </link>
+
+  <joint name="fr_foot_transform" type="fixed">
+    <origin xyz="-0.015 0 -0.362" rpy="0 0.7854 0" />
+    <parent link="fr_lleg"/>
+    <child link="fr_foot" />
+  </joint>
+
+  <link name="fr_foot"/>
 
   <joint name="hl_hipx" type="revolute">
     <origin xyz="-0.29785 0.05500 0.00000" rpy="0 0 0"/>
@@ -329,6 +346,14 @@
     </inertial>
   </link>
 
+  <joint name="hl_foot_transform" type="fixed">
+    <origin xyz="-0.015 0 -0.362" rpy="0 0.7854 0" />
+    <parent link="hl_lleg"/>
+    <child link="hl_foot" />
+  </joint>
+
+  <link name="hl_foot"/>
+
   <joint name="hr_hipx" type="revolute">
     <origin xyz="-0.29785 -0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
@@ -425,6 +450,12 @@
     </inertial>
   </link>
 
-  </xacro:macro>
+  <joint name="hr_foot_transform" type="fixed">
+    <origin xyz="-0.015 0 -0.362" rpy="0 0.7854 0" />
+    <parent link="hr_lleg"/>
+    <child link="hr_foot" />
+  </joint>
+
+  <link name="hr_foot"/>
 
 </robot>
