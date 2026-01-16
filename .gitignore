@@ -50,6 +50,7 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 
+simulink/hyl_controller*
 slprj/
 HyL.slx
 *.slx.r2024a
