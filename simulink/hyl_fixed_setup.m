@@ -42,15 +42,6 @@ pa_o = supply_pressure/2;           %Pa
 pb_o = supply_pressure/2;           %Pa
 
 valve_gain   = valve_rated_flow/(valve_input*sqrt(valve_pressure_drop/2));  %Valve gain
-flow_gain_qa = valve_gain*sqrt(supply_pressure-pa_o);   %Flow gain - positive flow
-flow_gain_qb = valve_gain*sqrt(pb_o-tank_pressure);     %Flow gain - negative flow
-
-Kc = (0.07/3000);                       %in^3/s.psi
-Kc = Kc * (0.000016387/6894.757293178); %(m^3/s.Pa)
-Kca = -Kc/2;                        % flow-pressure coefficients
-Kcb = -Kca;                         % flow-pressure coefficients
-Kpa =  flow_gain_qa/Kca;            % pressure sensitivity
-Kpb = -flow_gain_qb/Kcb;            % pressure sensitivity
 
 % Orifice area (Simscape valve block)
 Cd = 0.64;
