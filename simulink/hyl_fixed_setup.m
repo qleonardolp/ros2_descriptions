@@ -3,12 +3,14 @@
 % Run this script to generate the HyL RigidBodyTree struct for Simulink
 
 clear
-addpath('description','-end')
+addpath(genpath('description'))  % add folder and subfolders to path
 HyLRigidBodyTree = importrobot('description\hyl_fixed_simulink.urdf', CollisionDecomposition=true);
 HyLRigidBodyTree.Gravity = [0 0 -9.80665];
 % show(HyLRigidBodyTree)
 clc
 
+% Controller period
+Ts = 0.001;
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                 HPU and Oil Parameters                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
