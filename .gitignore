@@ -51,6 +51,7 @@ qtcreator-*
 CATKIN_IGNORE
 
 simulink/hyl_controller*
+/*.local
 slprj/
 HyL.slx
 *.slx.r2024a
