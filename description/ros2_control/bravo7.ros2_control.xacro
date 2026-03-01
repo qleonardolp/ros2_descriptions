@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="bravo7_control">
+    <xacro:property name="robot_yaml" value="$(find ros2_descriptions)/config/bravo7.yaml"/>
+    <xacro:property name="config" value="${xacro.load_yaml(robot_yaml)}"/>
+
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>$(find ros2_descriptions)/config/controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+
+    <ros2_control name="Bravo7System" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+
+      <joint name="g_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['g_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="f_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['f_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="e_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['e_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="d_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['d_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="c_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['c_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="b_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['b_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="a_joint">
+        <command_interface name="effort"/>
+        <state_interface name="position">
+          <param name="initial_value">${config['initial']['a_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

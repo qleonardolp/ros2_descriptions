@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Bravo7">
+
+  <link name="world">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.15"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.30"/>
+      </geometry>
+      <material name="StaticBlue">
+        <color rgba="0.20 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision name="support_body">
+      <origin rpy="0 0 0" xyz="0 0 0.15"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.30"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="support_joint" type="fixed">
+    <origin xyz="-0.045 0 0.30" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <xacro:include filename="$(find ros2_descriptions)/description/urdf/bravo7.description.urdf.xacro"/>
+  <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/bravo7.ros2_control.xacro"/>
+
+  <xacro:bravo7_control/>
+</robot>
