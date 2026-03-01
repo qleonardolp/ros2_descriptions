@@ -2,10 +2,10 @@
 
 # joints initial positions
 initial:
-  g_joint: -3.141592
-  f_joint: -0.7854
-  e_joint: -2.000
-  d_joint: -0.357
-  c_joint: 1.5708
-  b_joint: 0.0
+  g_joint: -3.14159
+  f_joint: 2.387
+  e_joint: 0.761
+  d_joint: -3.14159
+  c_joint: 1.574
+  b_joint: -3.14159
   a_joint: 0.0
