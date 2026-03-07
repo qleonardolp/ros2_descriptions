@@ -32,6 +32,7 @@
   <!-- manipulator without jaws, for Pinocchio lib -->
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/bravo7.description.urdf.xacro"/>
 
+  <!-- manipulator jaws -->
   <joint name="a_joint" type="prismatic">
     <!-- this parent link is the last link in bravo7.description -->
     <parent link="jaws_base_link"/>
@@ -109,6 +110,42 @@
         izz="0.000376"/>
     </inertial>
   </link>
+
+  <joint name="rs2_301_joint" type="revolute">
+    <parent link="jaws_handle_link"/>
+    <child link="rs2_301_link"/>
+    <origin xyz="0.0241 -0.0268 0" rpy="3.14159265359 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.0" effort="10" velocity="10"/>
+    <mimic joint="rs2_300_joint" multiplier="1" offset="0"/>
+  </joint>
+
+  <link name="rs2_301_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <material name="bblack"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    </collision>
+
+    <inertial>
+      <mass value="0.10"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia
+        ixx="0.000050" ixy="0.0" ixz="0.0"
+        iyy="0.000372" iyz="0.0"
+        izz="0.000376"/>
+    </inertial>
+  </link>
+  <!-- end of manipulator jaws -->
 
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/bravo7.ros2_control.xacro"/>
 
