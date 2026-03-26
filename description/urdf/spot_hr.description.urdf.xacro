@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_hr">
+
+  <material name="yellow">
+    <color rgba="1.0 0.894 0.0 1.0"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.337 0.349 0.380 1.0"/>
+  </material>
+
+  <!-- This link is to suppress KDL parsing warning. -->
+  <link name="body_dummy"/>
+
+  <joint name="trunk_dummy" type="fixed">
+    <origin xyz="0 0 0.4" rpy="0 0 0" />
+    <parent link="body_dummy"/>
+    <child link="body" />
+  </joint>
+
+  <link name="body">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/body.obj"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/body.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="8.215"/>
+      <origin
+        rpy="0 0 0"
+        xyz="0.006394396536052227 -9.812158532440662e-05 0.0009113792330026627"/>
+      <inertia
+        ixx="0.03285999968647957" ixy="0.0" ixz="0.0"
+        iyy="0.03285999968647957" iyz="0.0"
+        izz="0.03285999968647957"/>
+    </inertial>
+  </link>
+
+  <joint name="hr_hipx" type="revolute">
+    <origin xyz="-0.29785 -0.05500 0.00000" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="body"/>
+    <child link="hr_hip"/>
+    <limit effort="999.9" velocity="999.9" lower="-0.78539816339744827899" upper="0.78539816339744827899"/>
+  </joint>
+
+  <link name="hr_hip">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/hr_hip.obj"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hr_hip.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="-0.716521349312305 -0.02956473059648479 -0.03655230014702582"
+        xyz="0.005374345928430557 -0.012841847725212574 9.875232353806496e-05"/>
+      <mass value="1.68"/>
+      <inertia
+        ixx="0.002114739887345538" ixy="0.0" ixz="0.0"
+        iyy="0.001812957795660713" iyz="0.0"
+        izz="0.002265435737304666"/>
+    </inertial>
+  </link>
+
+  <joint name="hr_hipy" type="revolute">
+    <origin xyz="0.0 -0.11080 0.0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="hr_hip"/>
+    <child link="hr_uleg"/>
+    <limit effort="999.9" velocity="999.9" lower="-0.89884456477707963539" upper="2.2951079663725435509"/>
+  </joint>
+
+  <link name="hr_uleg">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/hr_uleg.obj"/>
+      </geometry>
+      <material name="yellow"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hr_uleg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="0.2643905306958363 -0.04853174688302708 -0.024046943559834943"
+        xyz="0.005142373498529196 0.0024323677644133568 -0.12100915610790253"/>
+      <mass value="2.34"/>
+      <inertia
+        ixx="0.02755964678927691" ixy="0.0" ixz="0.0"
+        iyy="0.02735491706466737" iyz="0.0"
+        izz="0.00284814535947648"/>
+    </inertial>
+  </link>
+
+  <joint name="hr_knee" type="revolute">
+    <origin xyz="0.025 0.000 -0.3200" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="hr_uleg"/>
+    <child link="hr_lleg"/>
+    <limit effort="999.9" velocity="999.9" lower="-2.7929" upper="-0.248282"/>
+  </joint>
+
+  <link name="hr_lleg">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/hr_lleg.obj"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hr_lleg.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        rpy="-0.007266925694167092 -0.009591807116834161 0.00035255970529224356"
+        xyz="0.00225794012658298 4.607596201822162e-05 -0.1800822913646698"/>
+      <mass value="0.35"/>
+      <inertia
+        ixx="0.003999022654901177" ixy="0.0" ixz="0.0"
+        iyy="0.004050315759801078" iyz="0.0"
+        izz="0.000149340209764742"/>
+    </inertial>
+  </link>
+
+  <joint name="hr_foot_transform" type="fixed">
+    <origin xyz="-0.015 0 -0.362" rpy="0 0.7854 0" />
+    <parent link="hr_lleg"/>
+    <child link="hr_foot" />
+  </joint>
+
+  <link name="hr_foot"/>
+
+</robot>
