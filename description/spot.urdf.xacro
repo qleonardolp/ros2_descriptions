@@ -1,8 +1,21 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot">
 
-  <!-- With Gazebo Harmonic (v8.10), we suppress the world link and joint
-       in order to allow the robot trunk 6 DoF. -->
+  <!--
+    The 'world' link must be suppressed to allow the 6-DoF of
+    the robot trunk (root link). Through the PosePublisher plugin,
+    one can publish the model pose and visualize it properly on Rviz2.
+  -->
+  <gazebo>
+    <plugin
+      filename="gz-sim-pose-publisher-system"
+      name="gz::sim::systems::PosePublisher">
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <publish_model_pose>true</publish_model_pose>
+      <publish_link_pose>false</publish_link_pose>
+      <update_frequency>200</update_frequency>
+    </plugin>
+  </gazebo>
 
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot.ros2_control.xacro" />
