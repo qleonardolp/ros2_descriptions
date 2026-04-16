@@ -27,7 +27,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/body.stl" />
+        <box size="0.85 0.25 0.18"/>
       </geometry>
     </collision>
     <inertial>
@@ -90,8 +90,9 @@
       <material name="yellow"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.16"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fl_uleg.stl" />
+        <cylinder radius="0.04" length="0.34"/>
       </geometry>
     </collision>
     <inertial>
@@ -122,8 +123,9 @@
       <material name="grey"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.336"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fl_lleg.stl" />
+        <sphere radius="0.0355"/>
       </geometry>
     </collision>
     <inertial>
@@ -194,8 +196,9 @@
       <material name="yellow"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.16"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fr_uleg.stl" />
+        <cylinder radius="0.04" length="0.34"/>
       </geometry>
     </collision>
     <inertial>
@@ -226,8 +229,9 @@
       <material name="grey"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.336"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/fr_lleg.stl" />
+        <sphere radius="0.0355"/>
       </geometry>
     </collision>
     <inertial>
@@ -298,8 +302,9 @@
       <material name="yellow"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.16"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hl_uleg.stl" />
+        <cylinder radius="0.04" length="0.34"/>
       </geometry>
     </collision>
     <inertial>
@@ -330,8 +335,9 @@
       <material name="grey"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.336"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hl_lleg.stl" />
+        <sphere radius="0.0355"/>
       </geometry>
     </collision>
     <inertial>
@@ -402,8 +408,9 @@
       <material name="yellow"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.16"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hr_uleg.stl" />
+        <cylinder radius="0.04" length="0.34"/>
       </geometry>
     </collision>
     <inertial>
@@ -434,8 +441,9 @@
       <material name="grey"/>
     </visual>
     <collision>
+      <origin xyz="0.0 0 -0.336"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/spot/collision/hr_lleg.stl" />
+        <sphere radius="0.0355"/>
       </geometry>
     </collision>
     <inertial>
