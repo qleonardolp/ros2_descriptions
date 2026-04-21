@@ -43,13 +43,6 @@
       <material name="bblack"/>
     </visual>
 
-    <collision>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1013 A.stl"/>
-      </geometry>
-      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
-    </collision>
-
     <inertial>
       <mass value="1.620"/>
       <origin rpy="0 0 0" xyz="0.031 -0.010 0.098"/>
@@ -79,8 +72,9 @@
 
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1013_merged.stl"/>
+        <cylinder radius="0.044" length="0.300"/>
       </geometry>
+      <origin rpy="0 0.041 0" xyz="0.044 0.0 -0.155"/>
     </collision>
 
     <inertial>
@@ -204,9 +198,9 @@
 
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1038.stl"/>
+        <cylinder radius="0.040" length="0.120"/>
       </geometry>
-      <origin xyz="0 0 0.0054" rpy="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0654"/>
     </collision>
 
     <inertial>

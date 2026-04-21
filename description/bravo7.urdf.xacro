@@ -61,18 +61,19 @@
     </visual>
 
     <collision>
+      <origin rpy="0 1.57079632679 0" xyz="0.015 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-257.stl"/>
+        <cylinder radius="0.0356" length="0.030"/>
       </geometry>
     </collision>
 
     <inertial>
-      <mass value="0.44"/>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.512"/>
+      <origin rpy="0 0 0" xyz="0.004429 -0.000023 0"/>
       <inertia
-        ixx="0.000309" ixy="0.0" ixz="0.0"
-        iyy="0.002237" iyz="0.0"
-        izz="0.002258"/>
+        ixx="0.000379379" ixy="-5.1539957e-08" ixz="9.63256406e-08"
+        iyy="0.000275446" iyz="6.10616562e-08"
+        izz="0.000271025"/>
     </inertial>
   </link>
 
@@ -102,12 +103,12 @@
     </collision>
 
     <inertial>
-      <mass value="0.10"/>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.32667"/>
+      <origin rpy="0 0 0" xyz="0.050421 0.020670 0"/>
       <inertia
-        ixx="0.000050" ixy="0.0" ixz="0.0"
-        iyy="0.000372" iyz="0.0"
-        izz="0.000376"/>
+        ixx="7.1023328e-05" ixy="-0.0001197464" ixz="0.0"
+        iyy="0.000422552" iyz="0.0"
+        izz="0.000454988"/>
     </inertial>
   </link>
 
@@ -125,7 +126,6 @@
       <geometry>
         <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
       <material name="bblack"/>
     </visual>
 
@@ -133,16 +133,15 @@
       <geometry>
         <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
     </collision>
 
     <inertial>
-      <mass value="0.10"/>
-      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="0.4555"/>
+      <origin rpy="0 0 0" xyz="0.052475 -0.022378 0"/>
       <inertia
-        ixx="0.000050" ixy="0.0" ixz="0.0"
-        iyy="0.000372" iyz="0.0"
-        izz="0.000376"/>
+        ixx="0.000151411" ixy="0.00015977" ixz="-1.318157e-09"
+        iyy="0.000574993" iyz="0.0"
+        izz="0.000570182"/>
     </inertial>
   </link>
   <!-- end of manipulator jaws -->
