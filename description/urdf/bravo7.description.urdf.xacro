@@ -4,14 +4,14 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1019 A.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1019.stl"/>
       </geometry>
       <material name="bblack"/>
     </visual>
 
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1019 A.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1019.stl"/>
       </geometry>
     </collision>
 
@@ -105,28 +105,17 @@
   <link name="1026_0_joint_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026 B.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
       </geometry>
-      <material name="bblack"/>
-    </visual>
-    <visual>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026 C.stl"/>
-      </geometry>
-      <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 0"/>
+      <origin xyz="-0.0052 0 0"/>
       <material name="bblack"/>
     </visual>
 
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026 B.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
       </geometry>
-    </collision>
-    <collision>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026 C.stl"/>
-      </geometry>
-      <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 0"/>
+      <origin xyz="-0.0052 0 0"/>
     </collision>
 
     <inertial>

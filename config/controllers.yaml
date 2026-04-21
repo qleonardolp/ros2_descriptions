@@ -23,4 +23,4 @@ joint_state_broadcaster:
   ros__parameters:
     type: joint_state_broadcaster/JointStateBroadcaster
     is_async: true
-    update_rate: 50
+    update_rate: 100
