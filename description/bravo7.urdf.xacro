@@ -29,6 +29,11 @@
     <origin xyz="-0.045 0 0.60" rpy="0 0 0"/>
   </joint>
 
+  <!--
+    URDF joint dynamics and link inertia were adjusted for a stable
+    execution with 'gz-physics-bullet-featherstone-plugin'.
+  -->
+
   <!-- manipulator without jaws, for Pinocchio lib -->
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/bravo7.description.urdf.xacro"/>
 
