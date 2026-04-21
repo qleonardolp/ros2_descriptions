@@ -21,7 +21,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['g_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -30,7 +32,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['f_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -39,7 +43,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['e_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -48,7 +54,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['d_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -57,7 +65,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['c_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -66,7 +76,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['b_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 
@@ -75,7 +87,9 @@
         <state_interface name="position">
           <param name="initial_value">${config['initial']['a_joint']}</param>
         </state_interface>
-        <state_interface name="velocity"/>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
         <state_interface name="effort"/>
       </joint>
 

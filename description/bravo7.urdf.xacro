@@ -40,7 +40,7 @@
     <origin rpy="0 0 0" xyz="0.009 0 0"/>
     <axis xyz="1 0 0"/>
     <limit lower="0.000" upper="0.010" effort="10" velocity="10"/>
-    <dynamics damping="0.14833" friction="13.166"/>
+    <dynamics damping="0.074" friction="0.07"/>
   </joint>
 
   <!-- dummy frame for the prismatic joint -->
@@ -50,7 +50,7 @@
       <inertia
         ixx="0.000422552" ixy="0.0" ixz="0.0"
         iyy="0.000422552" iyz="0.0"
-        izz="7.10233e-05"/>
+        izz="1.10233e-04"/>
     </inertial>
   </link>
 
@@ -79,8 +79,8 @@
       <mass value="0.512"/>
       <origin rpy="0 0 0" xyz="0.004429 -0.000023 0"/>
       <inertia
-        ixx="0.000379379" ixy="-5.1539957e-08" ixz="9.63256406e-08"
-        iyy="0.000275446" iyz="6.10616562e-08"
+        ixx="0.000379379" ixy="0.0" ixz="0.0"
+        iyy="0.000275446" iyz="0.0"
         izz="0.000271025"/>
     </inertial>
   </link>
@@ -114,7 +114,7 @@
       <mass value="0.32667"/>
       <origin rpy="0 0 0" xyz="0.050421 0.020670 0"/>
       <inertia
-        ixx="7.1023328e-05" ixy="-0.0001197464" ixz="0.0"
+        ixx="1.00232e-04" ixy="0.0" ixz="0.0"
         iyy="0.000422552" iyz="0.0"
         izz="0.000454988"/>
     </inertial>
@@ -147,7 +147,7 @@
       <mass value="0.4555"/>
       <origin rpy="0 0 0" xyz="0.052475 -0.022378 0"/>
       <inertia
-        ixx="0.000151411" ixy="0.00015977" ixz="-1.318157e-09"
+        ixx="0.000151411" ixy="0.0" ixz="0.0"
         iyy="0.000574993" iyz="0.0"
         izz="0.000570182"/>
     </inertial>

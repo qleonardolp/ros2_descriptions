@@ -8,4 +8,4 @@ initial:
   d_joint: -3.14159
   c_joint: 1.574
   b_joint: -3.14159
-  a_joint: 0.0
+  a_joint: 0.002

@@ -35,7 +35,7 @@
     <origin xyz="0.0665 0 0.0858" rpy="0 0 3.14159265359"/>
     <axis xyz="0 0 -1"/>
     <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="7.15" friction="0.079"/>
   </joint>
 
   <link name="1013_base_link">
@@ -46,6 +46,13 @@
       <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
       <material name="bblack"/>
     </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1013 A.stl"/>
+      </geometry>
+      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+    </collision>
 
     <inertial>
       <mass value="1.620"/>
@@ -63,7 +70,7 @@
     <origin xyz="0.046 0 0.0667" rpy="0 0 0"/>
     <axis xyz="0 -1 0"/>
     <limit effort="110.0" velocity="0.7854" lower="0.0" upper="3.2"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="8.90" friction="0.079"/>
   </joint>
 
   <link name="1013_joint_link">
@@ -97,7 +104,7 @@
     <origin xyz="0.0052 0 -0.29434" rpy="3.14159265359 0 3.14159265359"/>
     <axis xyz="0 -1 0"/>
     <limit effort="110.0" velocity="0.7854" lower="0.0" upper="3.2"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="7.1" friction="0.079"/>
   </joint>
 
   <link name="1026_0_joint_link">
@@ -108,6 +115,13 @@
       <origin xyz="-0.0052 0 0"/>
       <material name="bblack"/>
     </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
+      </geometry>
+      <origin xyz="-0.0052 0 0"/>
+    </collision>
 
     <inertial>
       <mass value="1.330"/>
@@ -125,7 +139,7 @@
     <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 0"/>
     <axis xyz="0 0 -1"/>
     <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="5.1" friction="0.079"/>
   </joint>
 
   <link name="1023_0_base_link">
@@ -160,7 +174,7 @@
     <origin xyz="-0.0408 0 0.0644" rpy="0 0 3.14159265359"/>
     <axis xyz="0 -1 0"/>
     <limit effort="110.0" velocity="0.7854" lower="0.0" upper="3.2"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="6.59" friction="0.079"/>
   </joint>
 
   <link name="1023_0_joint_link">
@@ -171,6 +185,13 @@
       <origin xyz="-0.0052 0.001 0"/>
       <material name="bblack"/>
     </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
+      </geometry>
+      <origin xyz="-0.0052 0.001 0"/>
+    </collision>
 
     <inertial>
       <mass value="0.970"/>
@@ -188,7 +209,7 @@
     <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 3.14159265359"/>
     <axis xyz="0 0 -1"/>
     <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
-    <dynamics damping="1430.0" friction="0.079"/>
+    <dynamics damping="1.57" friction="0.079"/>
   </joint>
 
   <link name="1038_base_link">
