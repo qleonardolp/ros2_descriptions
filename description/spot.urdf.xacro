@@ -1,13 +1,24 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot">
+
+  <!--
+    The 'world' link must be suppressed and the robot trunk is the root
+    link with all the free body 6-DoF. Through the PosePublisher plugin,
+    one can publish the model pose and visualize it properly on Rviz2.
+  -->
+  <gazebo>
+    <plugin
+      filename="gz-sim-pose-publisher-system"
+      name="gz::sim::systems::PosePublisher">
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <publish_model_pose>true</publish_model_pose>
+      <publish_link_pose>false</publish_link_pose>
+      <update_frequency>50</update_frequency>
+    </plugin>
+  </gazebo>
+
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot.ros2_control.xacro" />
-
-  <link name="world"/>
-
-  <xacro:spot_robot parent="world">
-    <origin xyz="0 0 0.4" rpy="0 0 0" />
-  </xacro:spot_robot>
 
   <xacro:spot_control/>
 </robot>

@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Bravo7">
+
+  <material name="jaw_black">
+    <color rgba="0.401 0.403 0.403 1"/>
+  </material>
+
+  <link name="world">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.30"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.60"/>
+      </geometry>
+      <material name="StaticBlue">
+        <color rgba="0.20 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision name="support_body">
+      <origin rpy="0 0 0" xyz="0 0 0.30"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.60"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="support_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="-0.045 0 0.60" rpy="0 0 0"/>
+  </joint>
+
+  <!--
+    URDF joint dynamics and link inertia were adjusted for a stable
+    execution with 'gz-physics-bullet-featherstone-plugin'.
+  -->
+
+  <!-- manipulator without jaws, for Pinocchio lib -->
+  <xacro:include filename="$(find ros2_descriptions)/description/urdf/bravo7.description.urdf.xacro"/>
+
+  <!-- manipulator jaws -->
+  <joint name="a_joint" type="prismatic">
+    <!-- this parent link is the last link in bravo7.description -->
+    <parent link="jaws_base_link"/>
+    <child link="jaws_push_rod_link"/>
+    <origin rpy="0 0 0" xyz="0.009 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="0.000" upper="0.010" effort="10" velocity="10"/>
+    <dynamics damping="0.074" friction="0.07"/>
+  </joint>
+
+  <!-- dummy frame for the prismatic joint -->
+  <link name="jaws_push_rod_link">
+    <inertial>
+      <mass value="0.09"/>
+      <inertia
+        ixx="0.000422552" ixy="0.0" ixz="0.0"
+        iyy="0.000422552" iyz="0.0"
+        izz="1.10233e-04"/>
+    </inertial>
+  </link>
+
+  <joint name="jaws_base_joint" type="fixed">
+    <parent link="jaws_base_link"/>
+    <child link="jaws_handle_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="jaws_handle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-257.stl"/>
+      </geometry>
+      <material name="jaw_black"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 1.57079632679 0" xyz="0.015 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.0356" length="0.030"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.512"/>
+      <origin rpy="0 0 0" xyz="0.004429 -0.000023 0"/>
+      <inertia
+        ixx="0.000379379" ixy="0.0" ixz="0.0"
+        iyy="0.000275446" iyz="0.0"
+        izz="0.000271025"/>
+    </inertial>
+  </link>
+
+  <joint name="rs2_300_joint" type="revolute">
+    <parent link="jaws_handle_link"/>
+    <child link="rs2_300_link"/>
+    <origin xyz="0.0241 0.0268 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.0" effort="10" velocity="10"/>
+    <mimic joint="a_joint" multiplier="54" offset="0"/>
+  </joint>
+
+  <link name="rs2_300_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-300.stl"/>
+      </geometry>
+      <origin rpy="3.14159265359 0 0" xyz="0.0 0.0 0.0"/>
+      <material name="jaw_black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-300.stl"/>
+      </geometry>
+      <origin rpy="3.14159265359 0 0" xyz="0.0 0.0 0.0"/>
+    </collision>
+
+    <inertial>
+      <mass value="0.32667"/>
+      <origin rpy="0 0 0" xyz="0.050421 0.020670 0"/>
+      <inertia
+        ixx="1.00232e-04" ixy="0.0" ixz="0.0"
+        iyy="0.000422552" iyz="0.0"
+        izz="0.000454988"/>
+    </inertial>
+  </link>
+
+  <joint name="rs2_301_joint" type="revolute">
+    <parent link="jaws_handle_link"/>
+    <child link="rs2_301_link"/>
+    <origin xyz="0.0241 -0.0268 0" rpy="3.14159265359 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="0" upper="1.0" effort="10" velocity="10"/>
+    <mimic joint="rs2_300_joint" multiplier="1" offset="0"/>
+  </joint>
+
+  <link name="rs2_301_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
+      </geometry>
+      <material name="jaw_black"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.4555"/>
+      <origin rpy="0 0 0" xyz="0.052475 -0.022378 0"/>
+      <inertia
+        ixx="0.000151411" ixy="0.0" ixz="0.0"
+        iyy="0.000574993" iyz="0.0"
+        izz="0.000570182"/>
+    </inertial>
+  </link>
+  <!-- end of manipulator jaws -->
+
+  <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/bravo7.ros2_control.xacro"/>
+
+  <xacro:bravo7_control/>
+</robot>

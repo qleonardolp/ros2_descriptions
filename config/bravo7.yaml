@@ -1,0 +1,11 @@
+# Robot configuration
+
+# joints initial positions
+initial:
+  g_joint: -3.14159
+  f_joint: 2.387
+  e_joint: 0.761
+  d_joint: -3.14159
+  c_joint: 1.574
+  b_joint: -3.14159
+  a_joint: 0.002
