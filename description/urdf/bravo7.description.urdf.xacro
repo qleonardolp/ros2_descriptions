@@ -111,13 +111,6 @@
       <material name="bblack"/>
     </visual>
 
-    <collision>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
-      </geometry>
-      <origin xyz="-0.0052 0 0"/>
-    </collision>
-
     <inertial>
       <mass value="1.330"/>
       <origin rpy="0 0 0" xyz="0.034 -0.003 -0.046"/>
@@ -140,7 +133,7 @@
   <link name="1023_0_base_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 A.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023.stl"/>
       </geometry>
       <origin xyz="0 0 0.0054" rpy="0 0 3.14159265359"/>
       <material name="bblack"/>
@@ -148,7 +141,7 @@
 
     <collision>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 A.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023.stl"/>
       </geometry>
       <origin xyz="0 0 0.0054" rpy="0 0 3.14159265359"/>
     </collision>
@@ -175,29 +168,11 @@
   <link name="1023_0_joint_link">
     <visual>
       <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 B.stl"/>
+        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1026.stl"/>
       </geometry>
+      <origin xyz="-0.0052 0.001 0"/>
       <material name="bblack"/>
     </visual>
-    <visual>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 C.stl"/>
-      </geometry>
-      <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 3.14159265359"/>
-      <material name="bblack"/>
-    </visual>
-
-    <collision>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 B.stl"/>
-      </geometry>
-    </collision>
-    <collision>
-      <geometry>
-        <mesh filename="package://ros2_descriptions/description/meshes/bravo7/1023 C.stl"/>
-      </geometry>
-      <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 3.14159265359"/>
-    </collision>
 
     <inertial>
       <mass value="0.970"/>
