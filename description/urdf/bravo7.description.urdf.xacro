@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="Bravo7">
 
+  <material name="bblack">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
   <link name="base_link">
     <visual>
       <geometry>
@@ -25,12 +29,12 @@
     </inertial>
   </link>
 
-  <joint name="g_joint" type="continuous">
+  <joint name="g_joint" type="revolute">
     <parent link="base_link"/>
     <child link="1013_base_link"/>
     <origin xyz="0.0665 0 0.0858" rpy="0 0 3.14159265359"/>
     <axis xyz="0 0 -1"/>
-    <limit effort="110.0" velocity="0.7854"/>
+    <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
     <dynamics damping="1430.0" friction="0.079"/>
   </joint>
 
@@ -115,12 +119,12 @@
     </inertial>
   </link>
 
-  <joint name="d_joint" type="continuous">
+  <joint name="d_joint" type="revolute">
     <parent link="1026_0_joint_link"/>
     <child link="1023_0_base_link"/>
     <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 0"/>
     <axis xyz="0 0 -1"/>
-    <limit effort="110.0" velocity="0.7854"/>
+    <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
     <dynamics damping="1430.0" friction="0.079"/>
   </joint>
 
@@ -178,12 +182,12 @@
     </inertial>
   </link>
 
-  <joint name="b_joint" type="continuous">
+  <joint name="b_joint" type="revolute">
     <parent link="1023_0_joint_link"/>
     <child link="1038_base_link"/>
     <origin xyz="0.0408 0 -0.0956" rpy="3.14159265359 0 3.14159265359"/>
     <axis xyz="0 0 -1"/>
-    <limit effort="110.0" velocity="0.7854"/>
+    <limit effort="110.0" velocity="0.7854" lower="-6.28318530718" upper="6.28318530718"/>
     <dynamics damping="1430.0" friction="0.079"/>
   </joint>
 

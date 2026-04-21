@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Bravo7">
 
-  <material name="bblack">
-    <color rgba="0.3 0.3 0.3 1"/>
+  <material name="jaw_black">
+    <color rgba="0.401 0.403 0.403 1"/>
   </material>
 
   <link name="world">
@@ -44,7 +44,15 @@
   </joint>
 
   <!-- dummy frame for the prismatic joint -->
-  <link name="jaws_push_rod_link"/>
+  <link name="jaws_push_rod_link">
+    <inertial>
+      <mass value="0.09"/>
+      <inertia
+        ixx="0.000422552" ixy="0.0" ixz="0.0"
+        iyy="0.000422552" iyz="0.0"
+        izz="7.10233e-05"/>
+    </inertial>
+  </link>
 
   <joint name="jaws_base_joint" type="fixed">
     <parent link="jaws_base_link"/>
@@ -57,7 +65,7 @@
       <geometry>
         <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-257.stl"/>
       </geometry>
-      <material name="bblack"/>
+      <material name="jaw_black"/>
     </visual>
 
     <collision>
@@ -92,7 +100,7 @@
         <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-300.stl"/>
       </geometry>
       <origin rpy="3.14159265359 0 0" xyz="0.0 0.0 0.0"/>
-      <material name="bblack"/>
+      <material name="jaw_black"/>
     </visual>
 
     <collision>
@@ -126,7 +134,7 @@
       <geometry>
         <mesh filename="package://ros2_descriptions/description/meshes/bravo7/RS2-301.stl"/>
       </geometry>
-      <material name="bblack"/>
+      <material name="jaw_black"/>
     </visual>
 
     <collision>
