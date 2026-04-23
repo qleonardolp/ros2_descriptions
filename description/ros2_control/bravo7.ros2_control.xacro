@@ -83,9 +83,31 @@
       </joint>
 
       <joint name="a_joint">
-        <command_interface name="effort"/>
+        <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">${config['initial']['a_joint']}</param>
+        </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="rs2_300_joint">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.02</param>
+        </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="rs2_301_joint">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">0.02</param>
         </state_interface>
         <state_interface name="velocity">
           <param name="initial_value">0.0</param>
