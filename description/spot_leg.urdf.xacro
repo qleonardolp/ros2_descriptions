@@ -109,5 +109,5 @@
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot_leg.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot_leg.ros2_control.xacro" />
 
-  <xacro:spot_control fixed_support="${bench_setup == 'fixed'}"/>
+  <xacro:spot_control fixed_support="${bench_setup == 'fixed'}" walker_setup="${bench_setup == 'walker'}"/>
 </robot>

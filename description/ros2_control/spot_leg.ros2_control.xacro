@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="spot_control" params="fixed_support">
+  <xacro:macro name="spot_control" params="fixed_support walker_setup">
     <xacro:property name="robot_yaml" value="$(find ros2_descriptions)/config/spot.yaml"/>
     <xacro:property name="config" value="${xacro.load_yaml(robot_yaml)}"/>
 
@@ -25,6 +25,16 @@
           <state_interface name="effort"/>
         </joint>
       </xacro:unless>
+
+      <xacro:if value="${walker_setup}">
+        <joint name="pivot_joint">
+          <state_interface name="position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
+        </joint>
+      </xacro:if>
 
       <joint name="fl_hipx">
         <command_interface name="effort"/>
