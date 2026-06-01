@@ -1,13 +1,16 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_leg">
 
-  <xacro:arg name="fixed" default="true"/>
+  <xacro:arg name="setup" default=""/>
+  <xacro:property name="bench_setup" value="$(arg setup)"/>
+
+  <xacro:property name="walker_radius" value="4.85"/>
 
   <material name="StaticBlue">
     <color rgba="0.20 1.0 1.0 0.9"/>
   </material>
 
-  <xacro:if value="$(arg fixed)">
+  <xacro:if value="${bench_setup == 'fixed'}">
     <link name="world"/>
 
     <joint name="support_joint" type="fixed">
@@ -16,14 +19,15 @@
       <child link="leg_support" />
     </joint>
   </xacro:if>
-  <xacro:unless value="$(arg fixed)">
+
+  <xacro:if value="${bench_setup == 'vertical'}">
     <link name="world">
       <visual>
-      <origin xyz="-0.2345 -0.245 1.0" rpy="0 0 0" />
-      <geometry>
-        <box size="0.08 0.08 2.0"/>
-      </geometry>
-      <material name="StaticBlue"/>
+        <origin xyz="-0.2345 -0.245 1.0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.08 0.08 2.0"/>
+        </geometry>
+        <material name="StaticBlue"/>
       </visual>
     </link>
 
@@ -35,10 +39,75 @@
       <limit effort="999.9" velocity="340.0" lower="-0.15" upper="2.60"/>
       <dynamics damping="0.08" friction="0.023"/>
     </joint>
-  </xacro:unless>
+  </xacro:if>
+
+  <xacro:if value="${bench_setup == 'walker'}">
+    <link name="world"/>
+
+    <joint name="pivot_placement" type="fixed">
+      <origin xyz="0 0 0.7" rpy="0 0 0"/>
+      <parent link="world"/>
+      <child link="pivot" />
+    </joint>
+
+    <link name="pivot">
+      <visual>
+        <origin xyz="0 0 -0.35" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.10" length="0.7"/>
+        </geometry>
+        <material name="StaticBlue"/>
+      </visual>
+      <inertial>
+        <mass value="50.0"/>
+        <origin xyz="0 0 -0.35" rpy="0 0 0"/>
+        <inertia
+          ixx="2.16667" ixy="0.0" ixz="0.0"
+          iyy="2.16667" iyz="0.0"
+          izz="0.2500"/>
+      </inertial>
+    </link>
+
+    <joint name="pivot_joint" type="continuous">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <parent link="pivot"/>
+      <child link="walker_arm"/>
+      <dynamics damping="0.097" friction="0.15"/>
+    </joint>
+
+    <link name="walker_arm">
+      <visual>
+        <origin xyz="${0.5*walker_radius} 0 0.035"/>
+        <geometry>
+          <box size="${walker_radius} 0.07 0.07"/>
+        </geometry>
+        <material name="ArmBlue">
+          <color rgba="0.1 0.5 1.0 0.9"/>
+        </material>
+      </visual>
+      <inertial>
+        <mass value="5.0"/>
+        <origin xyz="${0.5*walker_radius} 0 0.035"/>
+        <inertia
+          ixx="0.00204" ixy="0.0" ixz="0.0"
+          iyy="${0.0833*5.0*walker_radius*walker_radius}" iyz="0.0"
+          izz="${0.0833*5.0*walker_radius*walker_radius}"/>
+      </inertial>
+    </link>
+
+    <joint name="support_joint" type="prismatic">
+      <origin xyz="${walker_radius - 0.1} 0.169 0.035" rpy="0 0 ${-pi/2}"/>
+      <axis xyz="0 0 1"/>
+      <parent link="walker_arm"/>
+      <child link="leg_support"/>
+      <limit effort="999.9" velocity="340.0" lower="-0.60" upper="0.20"/>
+      <dynamics damping="0.045" friction="0.089"/>
+    </joint>
+  </xacro:if>
 
   <xacro:include filename="$(find ros2_descriptions)/description/urdf/spot_leg.description.urdf.xacro" />
   <xacro:include filename="$(find ros2_descriptions)/description/ros2_control/spot_leg.ros2_control.xacro" />
 
-  <xacro:spot_control fixed_support="$(arg fixed)"/>
+  <xacro:spot_control fixed_support="${bench_setup == 'fixed'}" walker_setup="${bench_setup == 'walker'}"/>
 </robot>

@@ -10,7 +10,7 @@
   </material>
 
   <link name="leg_support">
-    <xacro:if value="$(arg fixed)">
+    <xacro:if value="${bench_setup == 'fixed'}">
       <visual>
         <origin xyz="-0.2455 0.05500 -0.33" rpy="0 0 0" />
         <geometry>

@@ -26,6 +26,9 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument("robot", default_value=" ", description="Robot model.")
     )
+    declared_arguments.append(
+        DeclareLaunchArgument("bench_setup", default_value=" ", description="Test bench setup.")
+    )
 
     robot_model = LaunchConfiguration("robot")
     package_share = FindPackageShare("ros2_descriptions")
@@ -38,7 +41,9 @@ def generate_launch_description():
             " ",
             PathJoinSubstitution(
                 [package_share, "description", [robot_model, ".urdf.xacro"]]
-            )
+            ),
+            ' setup:=',
+            LaunchConfiguration('bench_setup'),
         ]
     )
 

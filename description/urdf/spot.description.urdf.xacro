@@ -10,15 +10,15 @@
   </material>
 
   <!-- This link is to suppress KDL parsing warning. -->
-  <link name="body_dummy"/>
+  <link name="spot_root"/>
 
-  <joint name="trunk_dummy" type="fixed">
-    <origin xyz="0 0 0.4" rpy="0 0 0" />
-    <parent link="body_dummy"/>
-    <child link="body" />
+  <joint name="trunk_root" type="fixed">
+    <origin xyz="0 0 -0.01" rpy="0 0 0" />
+    <parent link="spot_root"/>
+    <child link="spot_trunk" />
   </joint>
 
-  <link name="body">
+  <link name="spot_trunk">
     <visual>
       <geometry>
         <mesh filename="package://ros2_descriptions/description/meshes/spot/visual/body.obj"/>
@@ -26,8 +26,9 @@
       <material name="yellow"/>
     </visual>
     <collision>
+      <origin rpy="0 1.57079632679 0"/>
       <geometry>
-        <box size="0.85 0.25 0.18"/>
+        <cylinder radius="0.120" length="0.85"/>
       </geometry>
     </collision>
     <inertial>
@@ -45,7 +46,7 @@
   <joint name="fl_hipx" type="revolute">
     <origin xyz="0.29785 0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <parent link="body"/>
+    <parent link="spot_trunk"/>
     <child link="fl_hip"/>
     <limit effort="999.9" velocity="999.9" lower="-0.7853981634" upper="0.7853981634"/>
   </joint>
@@ -151,7 +152,7 @@
   <joint name="fr_hipx" type="revolute">
     <origin xyz="0.29785 -0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <parent link="body"/>
+    <parent link="spot_trunk"/>
     <child link="fr_hip"/>
     <limit effort="999.9" velocity="999.9" lower="-0.78539816339744827899" upper="0.78539816339744827899"/>
   </joint>
@@ -257,7 +258,7 @@
   <joint name="hl_hipx" type="revolute">
     <origin xyz="-0.29785 0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <parent link="body"/>
+    <parent link="spot_trunk"/>
     <child link="hl_hip"/>
     <limit effort="999.9" velocity="999.9" lower="-0.78539816339744827899" upper="0.78539816339744827899"/>
   </joint>
@@ -363,7 +364,7 @@
   <joint name="hr_hipx" type="revolute">
     <origin xyz="-0.29785 -0.05500 0.00000" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
-    <parent link="body"/>
+    <parent link="spot_trunk"/>
     <child link="hr_hip"/>
     <limit effort="999.9" velocity="999.9" lower="-0.78539816339744827899" upper="0.78539816339744827899"/>
   </joint>
